@@ -15,15 +15,21 @@ import android.widget.ImageView;
 import android.widget.TextView;
 
 import java.util.ArrayList;
+import java.util.Collections;
+import java.util.Scanner;
 
 public class MainActivity extends AppCompatActivity {
+
+
+
+
 
     private RecyclerView recyclerView;
     private Adapter adapter;
     ImageView image;
     //TextView tv_phonebook;
-    ArrayList<String> Name = new ArrayList<>();
-    ArrayList<String> Mobile = new ArrayList<>();
+    ArrayList<Contact> Name = new ArrayList<>();
+    ArrayList<Contact> Mobile = new ArrayList<>();
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -49,9 +55,18 @@ public class MainActivity extends AppCompatActivity {
         while (cursor.moveToNext()){
             String name = cursor.getString(cursor.getColumnIndex(ContactsContract.CommonDataKinds.Phone.DISPLAY_NAME));
             String mobile = cursor.getString(cursor.getColumnIndex(ContactsContract.CommonDataKinds.Phone.NUMBER));/// voici sa
+            Contact contact = new Contact(name,mobile);
+            Name.add(contact);
 
-           Name.add(name);
-           Mobile.add(mobile);// array with the name and the numbers
+           // Mobile.add(mobile);
+
+           // Collections.sort(Name);
+          // Collections.sort(Mobile);
+
+
+
+
+          // array with the name and the numbers
             //tv_phonebook.setText(arraylist.toString());
 
         }

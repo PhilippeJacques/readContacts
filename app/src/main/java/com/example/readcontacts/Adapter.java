@@ -14,14 +14,14 @@ import java.util.List;
 
 public class Adapter extends RecyclerView.Adapter<Adapter.ViewHolder> {
     private LayoutInflater layoutInflater;
-    private List<String> name;
-    private List<String> phoneNumber;
+    private List<Contact> name;
+    //private List<Contact> phoneNumber;
 
 
-    public Adapter(Context context, List<String> name, List<String> phoneNumber){
+    public Adapter(Context context, List<Contact> name){
         this.layoutInflater = LayoutInflater.from(context);
         this.name = name;
-        this.phoneNumber = phoneNumber;
+        //this.phoneNumber = phoneNumber;
     }
 
     @NonNull
@@ -34,16 +34,17 @@ public class Adapter extends RecyclerView.Adapter<Adapter.ViewHolder> {
     @Override
     public void onBindViewHolder(@NonNull ViewHolder viewHolder, final int i) {
         //bind the textView with data received
-        String nameRes = name.get(i);
-        viewHolder.name.setText(nameRes);
+        Contact nameRes = name.get(i);
+      
+        viewHolder.name.setText((CharSequence) nameRes);
 
-        String temperatureRes = phoneNumber.get(i);
-        viewHolder.phoneNumber.setText(temperatureRes);
+       // Contact temperatureRes = phoneNumber.get(i);
+       // viewHolder.phoneNumber.setText((CharSequence) temperatureRes);
 
         //similarly we set the images for each card depending on the temperature (switch suitable here)
         //TODO
 
-        viewHolder.name.setText(name.get(i));
+        viewHolder.name.setText((CharSequence) name.get(i));
         /*viewHolder.parentLayout.setOnClickListener(new View.OnClickListener(){
             public void onClick(View view){
                 Toast.makeText(view.getContext(), name.get(i), Toast.LENGTH_SHORT).show();
