@@ -14,13 +14,13 @@ import java.util.List;
 
 public class Adapter extends RecyclerView.Adapter<Adapter.ViewHolder> {
     private LayoutInflater layoutInflater;
-    private List<Contact> name;
+    private List<Contact> contactList;
     //private List<Contact> phoneNumber;
 
 
     public Adapter(Context context, List<Contact> name){
         this.layoutInflater = LayoutInflater.from(context);
-        this.name = name;
+        this.contactList = name;
         //this.phoneNumber = phoneNumber;
     }
 
@@ -34,9 +34,9 @@ public class Adapter extends RecyclerView.Adapter<Adapter.ViewHolder> {
     @Override
     public void onBindViewHolder(@NonNull ViewHolder viewHolder, final int i) {
         //bind the textView with data received
-        Contact nameRes = name.get(i);
-      
-        viewHolder.name.setText((CharSequence) nameRes);
+        Contact nameRes = contactList.get(i);
+
+      //  viewHolder.name.setText((CharSequence) nameRes);
 
        // Contact temperatureRes = phoneNumber.get(i);
        // viewHolder.phoneNumber.setText((CharSequence) temperatureRes);
@@ -44,7 +44,7 @@ public class Adapter extends RecyclerView.Adapter<Adapter.ViewHolder> {
         //similarly we set the images for each card depending on the temperature (switch suitable here)
         //TODO
 
-        viewHolder.name.setText((CharSequence) name.get(i));
+        //viewHolder.name.setText((CharSequence) contactList.get(i));
         /*viewHolder.parentLayout.setOnClickListener(new View.OnClickListener(){
             public void onClick(View view){
                 Toast.makeText(view.getContext(), name.get(i), Toast.LENGTH_SHORT).show();
@@ -54,12 +54,13 @@ public class Adapter extends RecyclerView.Adapter<Adapter.ViewHolder> {
                 //startActivity(intent);
             }
         });*/
-
+            viewHolder.name.setText(nameRes.getNiame());
+            viewHolder.phoneNumber.setText(nameRes.getNumber());
     }
 
     @Override
     public int getItemCount() {
-        return name.size();
+        return contactList.size();
     }
 
     public class ViewHolder extends RecyclerView.ViewHolder{

@@ -14,11 +14,13 @@ import android.provider.ContactsContract;
 import android.widget.ImageView;
 import android.widget.TextView;
 
+import java.lang.reflect.Array;
 import java.util.ArrayList;
+import java.util.Arrays;
 import java.util.Collections;
 import java.util.Scanner;
 
-public class MainActivity extends AppCompatActivity {
+public class MainActivity extends AppCompatActivity{
 
 
 
@@ -28,8 +30,8 @@ public class MainActivity extends AppCompatActivity {
     private Adapter adapter;
     ImageView image;
     //TextView tv_phonebook;
-    ArrayList<Contact> Name = new ArrayList<>();
-    ArrayList<Contact> Mobile = new ArrayList<>();
+    ArrayList<Contact> contactList = new ArrayList<>();
+    //ArrayList<Contact> Mobile = new ArrayList<>();
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -46,7 +48,7 @@ public class MainActivity extends AppCompatActivity {
 
         recyclerView = findViewById(R.id.recyclerView);
         recyclerView.setLayoutManager(new LinearLayoutManager(this));
-        adapter = new Adapter(this, Name, Mobile);
+        adapter = new Adapter(this, contactList);
         recyclerView.setAdapter(adapter);
     }
     private void getcontact(){
@@ -56,11 +58,13 @@ public class MainActivity extends AppCompatActivity {
             String name = cursor.getString(cursor.getColumnIndex(ContactsContract.CommonDataKinds.Phone.DISPLAY_NAME));
             String mobile = cursor.getString(cursor.getColumnIndex(ContactsContract.CommonDataKinds.Phone.NUMBER));/// voici sa
             Contact contact = new Contact(name,mobile);
-            Name.add(contact);
+
+            contactList.add(contact);
+            Collections.sort(contactList);
 
            // Mobile.add(mobile);
 
-           // Collections.sort(Name);
+
           // Collections.sort(Mobile);
 
 
