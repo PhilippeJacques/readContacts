@@ -2,5 +2,6 @@
     <string name="app_name">readcontacts</string>
     <string name="name">Philippe</string>
     <string name="phoneNumber">654 24 15 78</string>
+    <string name="Downloading_Contacts">Downloading Your Contacts</string>
 
 </resources>
